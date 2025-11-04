@@ -6,7 +6,7 @@ import edu.rico.javafx.login.EntityModels.PeliculaModel;
 /*
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-11-04T21:34:40+0100",
+    date = "2025-11-04T22:41:48+0100",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.2 (Oracle Corporation)"
 )
 */
