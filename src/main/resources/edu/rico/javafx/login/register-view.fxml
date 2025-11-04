@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="edu.rico.javafx.login.Controllers.RegisterController"
+           prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" spacing="20">
+        <Label fx:id="welcometext" alignment="TOP_CENTER"/>
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <Label fx:id="usernameL" text="Username" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="usernameT" promptText="Nombre de usuario" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label fx:id="nameL" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="nameT" promptText="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label fx:id="surnameL" text="Surname" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="surnameT" promptText="Apellidos" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label fx:id="emailL" text="Email" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="emailT" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label fx:id="birth_dateL" text="Birth date" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="birth_dateT" promptText="Fecha de nacimiento" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <Label fx:id="passwordL" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <PasswordField fx:id="passwordT" promptText="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+            <Label fx:id="feedbackL" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+            <Button fx:id="_backButton" onAction="#back" GridPane.columnIndex="0" GridPane.rowIndex="7">Volver al login</Button>
+            <Button fx:id="_submitB" onAction="#submitUser" GridPane.columnIndex="1" GridPane.rowIndex="7">Crear cuenta</Button>
+        </GridPane>
+    </VBox>
+</StackPane>

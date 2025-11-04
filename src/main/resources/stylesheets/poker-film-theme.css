@@ -1,0 +1,123 @@
+/*
+ * Hoja de Estilos JavaFX: Tema Póker y Cine Elegante (Poker Noir)
+ * ----------------------------------------------------------------
+ * Modificado: Rojo menos intenso, fuente más limpia, botones más pequeños.
+ */
+
+/* === 1. Variables y Fondo Principal (The Root) === */
+
+.root {
+    /* Paleta de Colores Modificada */
+    -fx-noir-black: #1A1A1A;     /* Negro Profundo (Noche de Cine) */
+    -fx-poker-green: #004D00;    /* Verde Oscuro (Tapete de Póker) */
+    -fx-primary-red: #8A0303;    /* BORGOÑA / ROJO VINO (Menos Intenso) */
+    -fx-secondary-gold: #FFD700; /* Oro (Glamour, Brillo) */
+    -fx-text-light: #E0E0E0;     /* Texto Claro/Blanco Sucio */
+
+    /* Configuración de Fuente Menos 'Blocky' */
+    -fx-font-family: "Franklin Gothic Medium", "Segoe UI", "Georgia", sans-serif;
+
+    /* Fondo de la Aplicación */
+    -fx-background-color: -fx-noir-black;
+    -fx-base: -fx-noir-black;
+    -fx-text-fill: -fx-text-light;
+}
+
+/* Contenedor principal que puede simular el tapete o la pantalla */
+.main-container {
+    -fx-background-color: -fx-poker-green;
+    -fx-padding: 20px;
+    -fx-border-color: -fx-secondary-gold;
+    -fx-border-width: 0 0 5px 0;
+}
+
+/* === 2. Componentes de Texto y Títulos === */
+
+.label {
+    -fx-text-fill: -fx-text-light;
+}
+
+/* Título Principal (Como el título de una película) */
+.title-label {
+    -fx-font-size: 28px; /* Ligeramente reducido */
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary-gold;
+    -fx-effect: dropshadow(gaussian, -fx-secondary-gold, 8, 0.4, 0, 0);
+}
+
+/* Subtítulos o Nombres de Sección */
+.subtitle-label {
+    -fx-font-size: 16px; /* Reducido */
+    -fx-text-fill: -fx-primary-red;
+    -fx-font-weight: bold;
+}
+
+/* === 3. Botones (Fichas de Póker o Neón) - TAMAÑO REDUCIDO === */
+
+.button {
+    -fx-background-color: -fx-primary-red;
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 12px; /* Más pequeño */
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px; /* Ligeramente menos redondeado */
+    -fx-padding: 8px 16px; /* Menos padding */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 6, 0.2, 1, 1);
+}
+
+/* Estado al pasar el ratón (Efecto "Neón On") */
+.button:hover {
+    -fx-background-color: #A01010; /* Tono de vino más brillante */
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, -fx-secondary-gold, 12, 0.6, 0, 0);
+}
+
+/* Botón de acción principal (e.g., "Apostar", "Iniciar Partida") */
+.button-primary {
+    -fx-background-color: -fx-secondary-gold;
+    -fx-text-fill: -fx-noir-black;
+}
+
+.button-primary:hover {
+    -fx-background-color: #FFEE99;
+    -fx-effect: dropshadow(gaussian, -fx-primary-red, 15, 0.8, 0, 0);
+}
+
+/* === 4. Campos de Entrada (TextFields) === */
+
+.text-field {
+    -fx-background-color: #333333, -fx-noir-black;
+    -fx-text-fill: -fx-text-light;
+    -fx-highlight-fill: -fx-primary-red;
+    -fx-border-color: -fx-primary-red;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+/* === 5. Elementos de la Interfaz (Listas, Tablas, Paneles) === */
+
+/* Panel que simula una carta o un marco de pantalla */
+.card-pane {
+    -fx-background-color: #303030;
+    -fx-border-color: -fx-secondary-gold;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-padding: 8px;
+}
+
+/* Listas o Tablas (Estilo elegante/serio) */
+.list-view, .table-view {
+    -fx-background-color: #262626;
+    -fx-border-color: -fx-primary-red;
+}
+
+.list-cell, .table-cell {
+    -fx-text-fill: -fx-text-light;
+    -fx-background-color: #262626;
+}
+
+/* Fila seleccionada */
+.list-cell:selected, .table-row-cell:selected {
+    -fx-background-color: -fx-primary-red;
+    -fx-text-fill: white;
+}

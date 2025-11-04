@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.rico.javafx.login.Controllers.AccountController">
+   <center>
+        <GridPane alignment="CENTER" hgap="20" prefHeight="332.0" prefWidth="55.0" vgap="20" BorderPane.alignment="CENTER">
+            <Label fx:id="usernameL" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="usernameT" promptText="Nuevo nombre de usuario" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label fx:id="nameL" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="nameT" promptText="Nuevo nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label fx:id="surnameL" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="surnameT" promptText="Nuevo apellido" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label fx:id="emailL" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+            <Label fx:id="birth_dateL" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="birth_dateT" promptText="Nueva fecha de nacimiento" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <Label fx:id="passwordL" text="Password: ----------------" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <PasswordField fx:id="passwordT" promptText="Nueva contraseña" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <Label fx:id="feedbackL" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+            <Button fx:id="_backButton" onAction="#back" GridPane.columnIndex="0" GridPane.rowIndex="7">Cambiar cuenta</Button>
+            <Button fx:id="_submitB" onAction="#submitChanges" GridPane.columnIndex="1" GridPane.rowIndex="7">Confirmar cambios</Button>
+            <TextField fx:id="emailT" prefHeight="26.0" prefWidth="276.0" promptText="Nuevo email" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+   </center>
+</BorderPane>
