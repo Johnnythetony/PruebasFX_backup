@@ -30,7 +30,7 @@ public class UserMenuController implements Initializable
     private Slider volumeS;
 
     @FXML
-    private Menu adminMenu;
+    private Menu adminMenuList;
 
     private String current_fxml;
 
@@ -41,7 +41,7 @@ public class UserMenuController implements Initializable
 
         if(Singleton.getUsuario().isIs_admin())
         {
-            adminMenu.setDisable(false);
+            adminMenuList.setVisible(true);
         }
     }
 

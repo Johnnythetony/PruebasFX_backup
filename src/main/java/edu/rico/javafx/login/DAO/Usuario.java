@@ -37,7 +37,6 @@ public class Usuario
     @Column(name = "password")
     private String password;
 
-    //TODO Preguntar a Rico que cojones pasa aqui y por que ya no me reconoce la contraseña
     @Column(name = "is_admin", columnDefinition = "TINYINT(1)")
     @Convert(converter = NumericBooleanConverter.class)
     private boolean is_admin;

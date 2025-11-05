@@ -30,7 +30,7 @@
                   </MenuItem>
               </items>
             </Menu>
-            <Menu fx:id="adminMenuList" mnemonicParsing="false" text="Administrar" visible="false">
+            <Menu fx:id="adminMenuList" mnemonicParsing="false" text="Administrar" visible="false" disable="true">
               <items>
                 <MenuItem fx:id="adminMenuPeliculas" mnemonicParsing="false" text="Gestionar peliculas" />
                   <MenuItem fx:id="adminMenuJugadores" mnemonicParsing="false" text="Gestionar jugadores" />

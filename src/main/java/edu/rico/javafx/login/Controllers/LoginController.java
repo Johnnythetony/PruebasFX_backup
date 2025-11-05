@@ -80,16 +80,11 @@ public class LoginController implements Initializable
             Singleton.setUsuario(nombreT.getText(), passwordT.getText());
             FXMLManager.loadScene("usermenu-view.fxml");
         }
-        else if(verificado == 1)
-        {
-            loginerror.setText("Contraseña incorrecta");
-            passwordT.setText("");
-        }
         else
         {
-            loginerror.setText("Usuario no encontrado");
-            nombreT.setText("");
+            loginerror.setText("Usuario/contraseña incorrectos");
             passwordT.setText("");
+            nombreT.setText("");
         }
     }
 
