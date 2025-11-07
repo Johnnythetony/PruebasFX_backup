@@ -24,3 +24,5 @@
 
 - Crear interfaces para la implementacion de los DAO(los modelos)
 - Cambiar donde se guardan los datos que estan relacionados con el usuario (peliculas, jugadores)
+
+-Preguntar a rico donde es mas conveniente que guarde la informacion relativa al usuario logeado (peliculas, jugadores, etc.)
