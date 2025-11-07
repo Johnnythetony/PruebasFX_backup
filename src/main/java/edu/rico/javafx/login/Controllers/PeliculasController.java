@@ -246,15 +246,13 @@ public class PeliculasController implements Initializable
 
     public void handleEliminar(ActionEvent actionEvent)
     {
-        //TODO gestionar el borrado de informacion para actualizar la base de datos (peliculas)
         try
         {
-            ModelHandler.removePeliculaDAO();
+            ModelHandler.removePeliculaDAO(tablaPeliculas.getSelectionModel().getSelectedItem());
         } catch(Exception e)
         {
             return;
         }
-        ModelHandler.getPeliculasUsuario().remove(tablaPeliculas.getSelectionModel().getSelectedItem());
     }
 
     public void handleLimpiar(ActionEvent actionEvent)

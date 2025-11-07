@@ -251,9 +251,21 @@ public class Singleton
         jugadores = null;
     }
 
-    public static void removePelicula()
+    public static void removePelicula(PeliculaModel pelicula)
     {
-
+        Pelicula pelicula_dao = PeliculaMapper.INSTANCE.PeliculaModelToPeliculaDAO(pelicula);
+        for (int i = 0; i < Singleton.getPeliculas().size(); i++)
+        {
+            if(pelicula_dao.getId() == Singleton.getPeliculas().get(i).getId())
+            {
+                try(Session s = Singleton.getInstance().getSessionFactory().openSession())
+                {
+                    Transaction t = s.beginTransaction();
+                    s.remove(Singleton.getPeliculas().get(i));
+                    t.commit();
+                }
+            }
+        }
     }
 
     public SessionFactory getSessionFactory()

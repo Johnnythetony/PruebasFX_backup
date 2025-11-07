@@ -1,6 +1,7 @@
 package edu.rico.javafx.login.EntityModels;
 
 import edu.rico.javafx.login.DAO.Singleton;
+import edu.rico.javafx.login.Mappers.PeliculaMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -10,7 +11,6 @@ import java.util.List;
 public class ModelHandler
 {
     private static ObservableList<JugadorModel> jugadores;
-
     private static ObservableList<PeliculaModel> peliculas_usuario;
     private static ObservableList<PeliculaModel> peliculas;
 
@@ -38,13 +38,7 @@ public class ModelHandler
 
         for(int i = 0; i < Singleton.getPeliculasUsuario().size(); i++)
         {
-            pelicula_model_list.add(new PeliculaModel(
-                    Singleton.getPeliculasUsuario().get(i).getId(),
-                    Singleton.getPeliculasUsuario().get(i).getTitulo(),
-                    Singleton.getPeliculasUsuario().get(i).getGenero(),
-                    Singleton.getPeliculasUsuario().get(i).getDirector(),
-                    Singleton.getPeliculasUsuario().get(i).getAnho(),
-                    Singleton.getPeliculasUsuario().get(i).getPortada()));
+            pelicula_model_list.add(PeliculaMapper.INSTANCE.PeliculaDAOToPeliculaModel(Singleton.getPeliculasUsuario().get(i)));
         }
 
         return pelicula_model_list;
@@ -56,13 +50,7 @@ public class ModelHandler
 
         for(int i = 0; i < Singleton.getPeliculas().size(); i++)
         {
-            pelicula_model_list.add(new PeliculaModel(
-                    Singleton.getPeliculas().get(i).getId(),
-                    Singleton.getPeliculas().get(i).getTitulo(),
-                    Singleton.getPeliculas().get(i).getGenero(),
-                    Singleton.getPeliculas().get(i).getDirector(),
-                    Singleton.getPeliculas().get(i).getAnho(),
-                    Singleton.getPeliculas().get(i).getPortada()));
+            pelicula_model_list.add(PeliculaMapper.INSTANCE.PeliculaDAOToPeliculaModel(Singleton.getPeliculas().get(i)));
         }
 
         return pelicula_model_list;
@@ -105,8 +93,9 @@ public class ModelHandler
         peliculas_usuario = null;
     }
 
-    public static void removePeliculaDAO()
+    public static void removePeliculaDAO(PeliculaModel peliculaModel)
     {
-        Singleton.removePelicula();
+        Singleton.removePelicula(peliculaModel);
+        ModelHandler.getPeliculas().remove(peliculaModel);
     }
 }

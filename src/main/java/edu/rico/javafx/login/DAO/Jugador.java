@@ -28,7 +28,7 @@ public class Jugador
     @Column(name="estilo")
     private String estilo;
 
-    public Jugador (){}
+    public Jugador(){}
 
     public Jugador(int id, String nombre, String apellido, String apodo, Date fechaNac, String estilo)
     {
