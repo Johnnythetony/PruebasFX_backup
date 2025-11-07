@@ -14,7 +14,7 @@
                   <TextField fx:id="tfSearchBar" />
                       <Accordion fx:id="accordionPeliculas">
                           <panes>
-                              <TitledPane animated="false" text="Sin genero" />
+                              <TitledPane animated="false" text="Sin genero"/>
                           </panes>
                       </Accordion>
               </items>
@@ -41,7 +41,7 @@
             <children>
             <Accordion>
               <panes>
-                <TitledPane animated="false" text="Editar">
+                <TitledPane animated="false" text="Editar" >
                      <content>
                             <VBox alignment="CENTER" prefWidth="250.0" spacing="15.0">
                                 <padding>

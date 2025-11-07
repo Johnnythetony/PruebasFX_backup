@@ -1,6 +1,8 @@
 package edu.rico.javafx.login.Controllers;
 
 import edu.rico.javafx.login.DAO.Pelicula;
+import edu.rico.javafx.login.EntityModels.ModelHandler;
+import edu.rico.javafx.login.EntityModels.PeliculaModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
@@ -8,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import java.net.URI;
@@ -40,11 +43,13 @@ public class PeliculaContextMenuController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ArrayList<> pelicula_data = retrieveFromAPI();
+        ArrayList<String> pelicula_data = retrieveFromAPI();
     }
 
-    private ArrayList retrieveFromAPI()
+    private ArrayList<String> retrieveFromAPI()
     {
+        ArrayList<String> datos_pelicula = new ArrayList();
+
         try
         {
         String f_title = "The_Matrix";
@@ -55,13 +60,15 @@ public class PeliculaContextMenuController implements Initializable
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-        ArrayList<String> datos_pelicula = new ArrayList();
-        JSONArray jsonArray = (JSONArray) JSONValue.parse("\"\""+response.body()+"\"\"");
+        Object o = JSONValue.parse(response.body());
+        JSONObject jsonObject = (JSONObject) o;
+        JSONArray jsonArray = (JSONArray) jsonObject.get("description");
+        PeliculaModel pelicula = ModelHandler.getSelectedFilm();
         //TODO Almacenar informacion recogida en un arraylist y colocar los datos en sus nodos correspondientes (utilizando JSON-simple)
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-        return
+        return datos_pelicula;
     }
 }

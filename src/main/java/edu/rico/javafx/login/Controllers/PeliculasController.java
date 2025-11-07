@@ -3,6 +3,8 @@ package edu.rico.javafx.login.Controllers;
 import edu.rico.javafx.login.EntityModels.ModelHandler;
 import edu.rico.javafx.login.EntityModels.PeliculaModel;
 import edu.rico.javafx.login.FXMLManager;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +15,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -24,6 +28,8 @@ import java.util.stream.Collectors;
 
 public class PeliculasController implements Initializable
 {
+    private static String texto_busqueda;
+    private Timeline timeline;
     private final static int DEBOUNCE_DELAY_MS = 400;
 
     @FXML
@@ -133,18 +139,37 @@ public class PeliculasController implements Initializable
         //Inicializar lista de peliculas a la izquierda
         filterPeliculas("");
 
+        //Configuramos la timeline
+        timeline = new Timeline(new KeyFrame(Duration.millis(DEBOUNCE_DELAY_MS), event -> filterPeliculas(texto_busqueda)));
+        timeline.setCycleCount(1);
+
         //Añadimos listeners a los campos de texto que usaremos para filtrar datos de la tabla y el panel izquierdo
         tfSearchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            filterPeliculas(newValue);
+            timeline.getKeyFrames().clear();
+            timeline.getKeyFrames().add(new KeyFrame(Duration.millis(DEBOUNCE_DELAY_MS), event -> filterPeliculas(texto_busqueda)));
+            timeline.stop();
+            setTexto_busqueda(newValue);
+            timeline.playFromStart();
         });
         tfSearchBarFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-            ObservableList<PeliculaModel> peliculas_usuario = filterPeliculasUsuario(newValue);
-            tablaPeliculas.setItems(peliculas_usuario);
-            if(!peliculas_usuario.isEmpty())
-            {
-                tablaPeliculas.prefHeightProperty().bind(Bindings.size(peliculas_usuario).multiply(tablaPeliculas.getFixedCellSize()).add(30));
-            }
+            timeline.getKeyFrames().clear();
+            timeline.getKeyFrames().add(new KeyFrame(Duration.millis(DEBOUNCE_DELAY_MS), event -> {
+                        ObservableList<PeliculaModel> peliculas_usuario = filterPeliculasUsuario(texto_busqueda);
+
+                        tablaPeliculas.setItems(peliculas_usuario);
+                        if (!peliculas_usuario.isEmpty()) {
+                            tablaPeliculas.prefHeightProperty().bind(Bindings.size(peliculas_usuario).multiply(tablaPeliculas.getFixedCellSize()).add(30));
+                        }
+                    }));
+            timeline.stop();
+            setTexto_busqueda(newValue);
+            timeline.playFromStart();
         });
+    }
+
+    private void setTexto_busqueda(String busqueda)
+    {
+        texto_busqueda = busqueda;
     }
 
     public void filterPeliculas(String filter)
@@ -183,6 +208,9 @@ public class PeliculasController implements Initializable
     ListView<PeliculaModel> listView = new ListView<>();
     ObservableList<PeliculaModel> items = FXCollections.observableArrayList(peliculas);
     listView.setItems(items);
+    listView.setMaxWidth(Double.MAX_VALUE);
+    listView.setMaxHeight(Double.MAX_VALUE);
+    listView.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
     listView.setCellFactory(lv -> new ListCell<PeliculaModel>() {
         @Override
@@ -251,7 +279,7 @@ public class PeliculasController implements Initializable
             ModelHandler.removePeliculaDAO(tablaPeliculas.getSelectionModel().getSelectedItem());
         } catch(Exception e)
         {
-            return;
+            e.printStackTrace();
         }
     }
 

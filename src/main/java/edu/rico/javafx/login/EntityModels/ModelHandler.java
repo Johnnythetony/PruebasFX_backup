@@ -98,4 +98,9 @@ public class ModelHandler
         Singleton.removePelicula(peliculaModel);
         ModelHandler.getPeliculas().remove(peliculaModel);
     }
+
+    public static PeliculaModel getSelectedFilm()
+    {
+        return peliculas.get(3);
+    }
 }
