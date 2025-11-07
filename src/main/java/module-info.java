@@ -10,6 +10,8 @@ module edu.rico.javafx.login {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.controls;
     requires org.mapstruct;
+    requires java.net.http;
+    requires json.simple;
 
 
     opens edu.rico.javafx.login to javafx.fxml, org.hibernate.orm.core, org.kordamp.bootstrapfx.core, javaf;
